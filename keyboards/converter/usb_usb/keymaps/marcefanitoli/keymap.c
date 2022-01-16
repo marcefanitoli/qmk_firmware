@@ -58,16 +58,3 @@ combo_t key_combos[] = {
     [combo_layer_6] = COMBO(LEFT_HAND_L, TO(6)),
     [combo_layer_7] = COMBO(LEFT_HAND_SCLN, TO(7)),
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(0,KC_NO):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(DM_PLY1); // Intercept tap function to send DYN_MACRO_PLAY1
-            } else if (record->event.pressed) {
-                tap_code16(DM_REC1); // Intercept hold function to send DYN_REC_START1
-            }
-            return false;
-    }
-    return true;
-}

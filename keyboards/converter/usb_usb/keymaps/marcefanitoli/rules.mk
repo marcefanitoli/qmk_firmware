@@ -1,2 +1,3 @@
 COMBO_ENABLE = yes
-DYNAMIC_MACRO_ENABLE = yes
+
+EXTRAFLAGS += -flto
