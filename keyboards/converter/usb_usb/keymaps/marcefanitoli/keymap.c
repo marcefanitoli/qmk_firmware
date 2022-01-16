@@ -1,57 +1,73 @@
-/*
-Copyright 2017 Balz Guenat <balz.guenat@gmail.com>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 #include QMK_KEYBOARD_H
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* 0: plain Qwerty without layer switching
-     *         ,---------------. ,---------------. ,---------------.
-     *         |F13|F14|F15|F16| |F17|F18|F19|F20| |F21|F22|F23|F24|
-     * ,---.   |---------------| |---------------| |---------------| ,-----------. ,---------------. ,-------.
-     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Pau| |VDn|VUp|Mut|Pwr| | Help  |
-     * `---'   `---------------' `---------------' `---------------' `-----------' `---------------' `-------'
-     * ,-----------------------------------------------------------. ,-----------. ,---------------. ,-------.
-     * |  `|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|JPY|Bsp| |Ins|Hom|PgU| |NmL|  /|  *|  -| |Stp|Agn|
-     * |-----------------------------------------------------------| |-----------| |---------------| |-------|
-     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|  \  | |Del|End|PgD| |  7|  8|  9|  +| |Mnu|Und|
-     * |-----------------------------------------------------------| `-----------' |---------------| |-------|
-     * |CapsL |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  :|  #|Retn|               |  4|  5|  6|KP,| |Sel|Cpy|
-     * |-----------------------------------------------------------|     ,---.     |---------------| |-------|
-     * |Shft|  <|  Z|  X|  C|  V|  B|  N|  M|  ,|  ,|  /| RO|Shift |     |Up |     |  1|  2|  3|KP=| |Exe|Pst|
-     * |-----------------------------------------------------------| ,-----------. |---------------| |-------|
-     * |Ctl|Gui|Alt|MHEN|HNJ| Space  |H/E|HENK|KANA|Alt|Gui|App|Ctl| |Lef|Dow|Rig| |  0    |  .|Ent| |Fnd|Cut|
-     * `-----------------------------------------------------------' `-----------' `---------------' `-------'
-     */
-    [0] = LAYOUT_all(
-                      KC_F13,  KC_F14,  KC_F15,  KC_F16, KC_F17, KC_F18, KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,
-    KC_ESC,           KC_F1,   KC_F2,   KC_F3,   KC_F4,  KC_F5,  KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,               KC_PSCR, KC_SLCK, KC_PAUS,    KC_VOLD, KC_VOLU, KC_MUTE, KC_PWR,     KC_HELP,
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_JYEN, KC_BSPC,     KC_INS,  KC_HOME, KC_PGUP,    KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,    KC_STOP, KC_AGIN,
-    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,          KC_BSLS,     KC_DEL,  KC_END,  KC_PGDN,    KC_P7,   KC_P8,   KC_P9,   KC_PPLS,    KC_MENU, KC_UNDO,
-    ______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_NUHS, KC_ENT,                                    KC_P4,   KC_P5,   KC_P6,   KC_PCMM,    KC_SLCT, KC_COPY,
-    KC_LSFT, KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,   KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RO,   KC_RSFT,              KC_UP,               KC_P1,   KC_P2,   KC_P3,   KC_PEQL,    KC_EXEC, KC_PSTE,
-    KC_LCTL, KC_LGUI, KC_LALT, KC_MHEN, KC_HANJ,         KC_SPC,         KC_HAEN, KC_HENK, KC_KANA, KC_RALT, KC_RGUI, KC_APP,  KC_RCTL,     KC_LEFT, KC_DOWN, KC_RGHT,    KC_P0,            KC_PDOT, KC_PENT,    KC_FIND, KC_CUT
-    ),
-    [1] = LAYOUT_all(
-                      ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______, ______,
-    ______,           ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______, ______,             ______,______,______,    ______,______,______,______,    ______,
-    ______,  ______,  ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______, ______, ______,     ______,______,______,    ______,______,______,______,    ______,______,
-    ______,  ______,  ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______, ______,         ______,     ______,______,______,    ______,______,______,______,    ______,______,
-    KC_CAPS,  ______,  ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______,         ______, ______,                              ______,______,______,______,    ______,______,
-    ______,  ______,  ______,  ______,  ______, ______, ______,  ______,  ______, ______,  ______, ______,         ______, ______,            ______,           ______,______,______,______,    ______,______,
-    ______,  ______,  ______,  ______,  ______,         ______,           ______, ______,  ______, ______, ______, ______, ______,     ______,______,______,    ______,       ______,______,    ______,______
-    ),
+
+/* THIS FILE WAS GENERATED!
+ *
+ * This file was generated by qmk json2c. You may or may not want to
+ * edit it directly.
+ */
+
+enum usb_usb_layers {
+    _QWERTY,
+    _OSM,
+    _CODING,
+    _GAMING,
+	_SHORTCUTS,
 };
+
+#define COMBO_ONLY_FROM_LAYER _QWERTY
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+	[_QWERTY] = LAYOUT_all(KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_F19, KC_F20, KC_F21, KC_F22, KC_F23, KC_F24, KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_PSCR, KC_SLCK, KC_PAUS, KC_VOLD, KC_VOLU, KC_MUTE, KC_PWR, KC_HELP, KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_JYEN, KC_BSPC, KC_INS, KC_HOME, KC_PGUP, KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS, KC_STOP, KC_AGIN, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL, KC_END, KC_PGDN, KC_P7, KC_P8, KC_P9, KC_PPLS, KC_MENU, KC_UNDO, XXXXXXX, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_NUHS, KC_ENT, KC_P4, KC_P5, KC_P6, KC_PCMM, KC_SLCT, KC_COPY, KC_LSFT, KC_NUBS, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RO, KC_RSFT, KC_UP, KC_P1, KC_P2, KC_P3, KC_PEQL, KC_EXEC, KC_PSTE, KC_LCTL, KC_LGUI, KC_LALT, KC_MHEN, KC_HANJ, KC_SPC, KC_HAEN, KC_HENK, KC_KANA, KC_RALT, LT(0,KC_NO), KC_APP, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT, KC_P0, KC_PDOT, KC_PENT, KC_FIND, KC_CUT),
+	[_OSM] = LAYOUT_all(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, OSM(MOD_LSFT), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, OSM(MOD_RSFT), _______, _______, _______, _______, _______, _______, _______, OSM(MOD_LCTL), _______, OSM(MOD_LALT), _______, _______, _______, _______, _______, _______, OSM(MOD_RALT), _______, _______, OSM(MOD_RCTL), _______, _______, _______, _______, _______, _______, _______, _______),
+	[_CODING] = LAYOUT_all(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LSPO, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RSPC, _______, _______, _______, _______, _______, _______, _______, KC_LCTL, _______, KC_LALT, _______, _______, _______, _______, _______, _______, KC_RALT, _______, _______, KC_RCTL, _______, _______, _______, _______, _______, _______, _______, _______),
+	[_GAMING] = LAYOUT_all(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LSFT, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RSFT, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, _______),
+	[_SHORTCUTS] = LAYOUT_all(XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_AGIN, XXXXXXX, XXXXXXX, KC_UNDO, XXXXXXX, XXXXXXX, RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_FIND, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_CUT, KC_COPY, KC_PSTE, XXXXXXX, KC_CALC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLU, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_VOLD, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX)
+};
+
+enum combo_events {
+  combo_layer_0,
+  combo_layer_1,
+  combo_layer_2,
+  combo_layer_3,
+  combo_layer_4,
+  combo_layer_5,
+  combo_layer_6,
+  combo_layer_7,
+  COMBO_LENGTH
+};
+
+uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
+
+const uint16_t PROGMEM RIGHT_HAND_A[] = {KC_J, KC_K, KC_L, KC_SCLN, KC_A, COMBO_END};
+const uint16_t PROGMEM RIGHT_HAND_S[] = {KC_J, KC_K, KC_L, KC_SCLN, KC_S, COMBO_END};
+const uint16_t PROGMEM RIGHT_HAND_D[] = {KC_J, KC_K, KC_L, KC_SCLN, KC_D, COMBO_END};
+const uint16_t PROGMEM RIGHT_HAND_F[] = {KC_J, KC_K, KC_L, KC_SCLN, KC_F, COMBO_END};
+const uint16_t PROGMEM LEFT_HAND_J[] = {KC_A, KC_S, KC_D, KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM LEFT_HAND_K[] = {KC_A, KC_S, KC_D, KC_F, KC_K, COMBO_END};
+const uint16_t PROGMEM LEFT_HAND_L[] = {KC_A, KC_S, KC_D, KC_F, KC_L, COMBO_END};
+const uint16_t PROGMEM LEFT_HAND_SCLN[] = {KC_A, KC_S, KC_D, KC_F, KC_SCLN, COMBO_END};
+
+combo_t key_combos[] = {
+    [combo_layer_0] = COMBO(RIGHT_HAND_A, TO(0)),
+    [combo_layer_1] = COMBO(RIGHT_HAND_S, TO(1)),
+    [combo_layer_2] = COMBO(RIGHT_HAND_D, TO(2)),
+    [combo_layer_3] = COMBO(RIGHT_HAND_F, TO(3)),
+    [combo_layer_4] = COMBO(LEFT_HAND_J, TO(4)),
+    [combo_layer_5] = COMBO(LEFT_HAND_K, TO(5)),
+    [combo_layer_6] = COMBO(LEFT_HAND_L, TO(6)),
+    [combo_layer_7] = COMBO(LEFT_HAND_SCLN, TO(7)),
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(0,KC_NO):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(DM_PLY1); // Intercept tap function to send DYN_MACRO_PLAY1
+            } else if (record->event.pressed) {
+                tap_code16(DM_REC1); // Intercept hold function to send DYN_REC_START1
+            }
+            return false;
+    }
+    return true;
+}

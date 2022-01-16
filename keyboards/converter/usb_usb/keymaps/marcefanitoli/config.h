@@ -1,0 +1,8 @@
+#pragma once
+
+#define COMBO_TERM 50
+#define EXTRA_SHORT_COMBOS
+
+#define DYNAMIC_MACRO_NO_NESTING
+
+#define TAPPING_TERM 200
